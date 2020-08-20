@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{tabularx}								% For table
+\usepackage[english]{babel}
+\usepackage{amsmath}                                % For textit, textbf, etc
+\usepackage{graphicx}                               % For includegraphics
+\usepackage{wrapfig}                                % For wrapfig environment
+\usepackage{paralist}                               % For compactitem 
+\usepackage[dvipdfm]{hyperref}                               % For links
+\usepackage{xcolor}                                 % For colors
+\usepackage{romannum}                               % For roman numbers
+\usepackage{ifthen}                                 % Required for ifthenelse statements
+%\usepackage{geometry}								% Already loaded by graphicx
+
+\pagestyle{empty}                                   % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}
+\sectionfont{%			                            % Change font of \section command
+	\usefont{OT1}{phv}{m}{n}%		                
+	\sectionrule{0pt}{0pt}{-10pt}{1pt}
+}
+\subsectionfont{%			                        % Change font of \subsection command
+	\usefont{OT1}{phv}{m}{n}%		                
+	%\sectionrule{0pt}{0pt}{-10pt}{1pt}
+}
+
+%%% Macros
+
+\newcommand{\sepspace}{\vspace*{1em}}		        % Vertical space macro
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+\newcommand{\NewSubPart}[1]{\subsection*{#1}}
+
+\newcommand{\MyName}[1]{
+    \noindent
+	\Huge \usefont{OT1}{phv}{m}{n} #1 \hfill        % Name
+	\par \normalsize \normalfont
+}
+
+\newcommand{\SimpleEntry}[1]{
+	\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	#1 \par                                         % Entry 
+}
+
+% Earlier I did this, but now I have used a table as it is more compact
+\newcommand{\Education}[4]{                    % Takes 4 variables
+    %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\begin{itemize}
+		\item\textbf{#1}                                     % School College
+		\hfill\textit{#2}\\		                        % Time
+		\text{#3}\\                                       % What, degree
+		\textit{#4}                               % Average, Focus, etc
+		\normalsize \par
+	\end{itemize}
+}
+
+\newcommand{\TitleEntry}[2]{                     
+	\noindent\hangindent=0.5cm\hangafter=0            % Indentation
+	\parbox{3cm}{                                   % Box to align text
+	    \textit{#1}
+	}			                                    % Title
+	#2 \par                                         % Entry	
+}
+
+% NOTE : textit{} takes newline if the text is full
+% Parameters : Name of project, year, mentor, Description and link
+\newcommand{\Project}[5]{                           % Takes 5 parameters
+    %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\begin{itemize}
+		\item\textbf{#1}                                     
+			\hfill\textit{#2}\\                     
+		\textit{#3}\\
+		\textit{#4}                                     
+		\hfill\textit{\textcolor{blue}{\href{#5}{Link}}}                               
+		\normalsize \par
+	\end{itemize}
+}
+
+\newcommand{\Skill}[3]{
+    %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\begin{itemize}
+		\item\textbf{#1}\\                                   % Topic of skill
+		\textit{#2}                                     % Description of Skill
+		\ifthenelse{\equal{#3}{}}
+		    {}                                                        % if true then {}
+		    { \hfill\textit{\textcolor{blue}{\href{#3}{Link}}} }       % else this
+		\normalsize \par
+	\end{itemize}
+}
+
+\newcommand{\Training}[2]{
+     \noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\textbf{#1}                                  % Description of Training
+	\hfill\textit{#2}                           % Date of Training
+    \normalsize \par
+}
+
+\newcommand{\Achievement}[3]{
+    %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\begin{itemize}
+		\item\textbf{#1}\\                                   % Topic of Achievement
+		\textit{#2}                                     % Description of Achievement
+		\ifthenelse{\equal{#3}{}}
+		    {}                                                        % if true then {}
+		    { \hfill\textit{\textcolor{blue}{\href{#3}{Link}}} }       % else this
+		\normalsize \par
+	\end{itemize}
+}
+
+\newcommand{\Activity}[2]{
+     %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+	\begin{itemize}
+		\item\textbf{#1}\\                               % Topic of Activity
+		\textit{#2}                                    % Description of Activity
+    	\normalsize \par
+	\end{itemize}
+}
