@@ -64,8 +64,21 @@
 }
 
 % NOTE : textit{} takes newline if the text is full
-% Parameters : Name of project, year, mentor, Description and link
-\newcommand{\Project}[5]{                           % Takes 5 parameters
+% Parameters : Name of project, year, mentor, Type, Description and link
+\newcommand{\Project}[6]{                           % Takes 6 parameters
+    %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
+  \begin{itemize}
+    \item\textbf{#1}                                     
+      \hfill\textbf{#2}\\                     
+    \text{#3}
+    \hfill\textbf{#4}\\ 
+    \textit{#5}                                     
+    \hfill\textit{\textcolor{blue}{\href{#6}{Link}}}                               
+    \normalsize \par
+  \end{itemize}
+}
+
+\newcommand{\RecentPublication}[5]{                           % Takes 5 parameters
     %\noindent\hangindent=0.5cm\hangafter=0          % Indentation
   \begin{itemize}
     \item\textbf{#1}                                     
